@@ -4,13 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WeatherMonitoringReportingService
+namespace WeatherMonitoringReportingService.Bots
 {
-    internal class Program
+    internal class RainBot
     {
-        static void Main(string[] args)
-        {
-
-        }
     }
 }

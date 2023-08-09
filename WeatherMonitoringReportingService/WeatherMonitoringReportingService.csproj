@@ -43,11 +43,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bots\RainBot.cs" />
+    <Compile Include="Bots\SnowBot.cs" />
+    <Compile Include="Bots\SunBot.cs" />
+    <Compile Include="DataFiles\WeatherParser.cs" />
+    <Compile Include="DataFiles\JSONParser.cs" />
+    <Compile Include="DataFiles\XMLParser.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Configurations.json" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

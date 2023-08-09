@@ -4,13 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WeatherMonitoringReportingService
+namespace WeatherMonitoringReportingService.DataFiles
 {
-    internal class Program
+    internal class XMLParser
     {
-        static void Main(string[] args)
-        {
-
-        }
     }
 }
