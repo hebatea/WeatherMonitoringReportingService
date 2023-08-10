@@ -7,11 +7,10 @@ using WeatherMonitoringReportingService.Data;
 
 namespace WeatherMonitoringReportingService.Bots
 {
-    public class SnowBot : IWeatherBot
+    public interface IWeatherObserver
     {
-        public void Update(WeatherData data)
-        {
-            throw new NotImplementedException();
-        }
+        void RegisterObserver(IWeatherBot weatherBot);
+        void RemoveObserver(IWeatherBot weatherBot);
+        void NotifyObserver(WeatherData weatherData);
     }
 }

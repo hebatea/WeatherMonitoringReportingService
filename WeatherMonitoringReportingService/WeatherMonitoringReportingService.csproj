@@ -72,9 +72,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bots\IWeatherBot.cs" />
     <Compile Include="Bots\RainBot.cs" />
     <Compile Include="Bots\SnowBot.cs" />
     <Compile Include="Bots\SunBot.cs" />
+    <Compile Include="Bots\IWeatherObserver.cs" />
+    <Compile Include="Bots\WeatherObserver.cs" />
     <Compile Include="Common.cs" />
     <Compile Include="Data\ConfigurationData.cs" />
     <Compile Include="Data\WeatherData.cs" />
