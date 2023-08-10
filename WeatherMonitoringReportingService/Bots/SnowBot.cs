@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WeatherMonitoringReportingService.Bots
 {
-    internal class SnowBot
+    public class SnowBot
     {
     }
 }

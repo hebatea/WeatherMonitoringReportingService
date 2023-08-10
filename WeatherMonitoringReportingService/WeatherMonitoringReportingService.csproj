@@ -76,6 +76,7 @@
     <Compile Include="Bots\SnowBot.cs" />
     <Compile Include="Bots\SunBot.cs" />
     <Compile Include="Common.cs" />
+    <Compile Include="Data\ConfigurationData.cs" />
     <Compile Include="Data\WeatherData.cs" />
     <Compile Include="Parsers\IWeatherParser.cs" />
     <Compile Include="Parsers\WeatherParserFactory.cs" />
