@@ -19,8 +19,7 @@ namespace WeatherMonitoringReportingService
     {
         static void Main(string[] args)
         {
-
-            while (true)
+             while (true)
             {
                 
                 WriteWeclomingAndChoicesInConsole();
@@ -40,27 +39,7 @@ namespace WeatherMonitoringReportingService
 
                     WeatherData weatherData = weatherParser.Parse(@fileName);
                     Console.WriteLine(weatherData + "\n");
-
-                    Console.WriteLine("Please Enter the File Path for Configuration: ");
-                    fileName = Console.ReadLine();
-
-                    IConfigurationParser configurationParser = new JSONConfigurationParser();
-                    Dictionary<Common.Bots, ConfigurationData> configurationsDictionary = configurationParser.ParseConfiguration(fileName);
-                    WeatherObserver weatherObserver = new WeatherObserver();
-
-                    foreach(var botConfigurationPair in configurationsDictionary)
-                    {
-                        var bot = botConfigurationPair.Key;
-                        var configuration = botConfigurationPair.Value;
-
-                        WeatherBot weatherBot = WeatherBotsFactory.GetWeatherBot(bot, configuration);
-
-                        weatherObserver.RegisterObserver(weatherBot);
-
-                    }
-
-                    weatherObserver.NotifyObserver(weatherData);
-
+                    DealingWithConfiguration(weatherData);
                 }
                 catch (FileNotFoundException fileNotFoundException)
                 {
@@ -75,11 +54,33 @@ namespace WeatherMonitoringReportingService
         {
             Console.WriteLine("****************************************************************");
             Console.WriteLine("****** Welcome to Weather Monitoring Reporting Service *********");
-            // TODO : Make it automatic using reflection
             Console.WriteLine("****************       1. Load from XML      *******************");
             Console.WriteLine("****************       2. Load from JSON     *******************");
             Console.WriteLine("****************       3. Exsit     *******************");
             Console.WriteLine("****************************************************************");
+        }
+
+        private static void DealingWithConfiguration(WeatherData weatherData)
+        {
+            Console.WriteLine("Please Enter the File Path for Configuration: ");
+            string fileName = Console.ReadLine();
+
+            IConfigurationParser configurationParser = new JSONConfigurationParser();
+            Dictionary<Common.Bots, ConfigurationData> configurationsDictionary = configurationParser.ParseConfiguration(fileName);
+            WeatherObserver weatherObserver = new WeatherObserver();
+
+            foreach (var botConfigurationPair in configurationsDictionary)
+            {
+                var bot = botConfigurationPair.Key;
+                var configuration = botConfigurationPair.Value;
+
+                WeatherBot weatherBot = WeatherBotsFactory.GetWeatherBot(bot, configuration);
+
+                weatherObserver.RegisterObserver(weatherBot);
+
+            }
+
+            weatherObserver.NotifyObserver(weatherData);
         }
     }
 }
