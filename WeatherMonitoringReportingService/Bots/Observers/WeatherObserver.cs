@@ -9,11 +9,11 @@ namespace WeatherMonitoringReportingService.Bots
 {
     public class WeatherObserver : IWeatherObserver
     {
-        List<IWeatherBot> _observers;
+        List<WeatherBot> _observers;
 
         public WeatherObserver()
         {
-            _observers = new List<IWeatherBot>();
+            _observers = new List<WeatherBot>();
         }
 
         public void NotifyObserver(WeatherData weatherData)
@@ -24,12 +24,12 @@ namespace WeatherMonitoringReportingService.Bots
             }
         }
 
-        public void RegisterObserver(IWeatherBot weatherBot)
+        public void RegisterObserver(WeatherBot weatherBot)
         {
             _observers.Add(weatherBot);
         }
 
-        public void RemoveObserver(IWeatherBot weatherBot)
+        public void RemoveObserver(WeatherBot weatherBot)
         {
             _observers.Add(weatherBot);
         }

@@ -13,7 +13,7 @@ namespace WeatherMonitoringReportingService.Bots.Strategy
         {
             if (configurationData.Enabled)
             {
-                if (weatherData.Temperature > configurationData.HumidityThreshold)
+                if (weatherData.Humidity > configurationData.HumidityThreshold)
                 {
                     Console.WriteLine("RainBot Activated!");
                     Console.WriteLine(configurationData.Message);
