@@ -9,8 +9,8 @@ namespace WeatherMonitoringReportingService.Bots
 {
     public interface IWeatherObserver
     {
-        void RegisterObserver(IWeatherBot weatherBot);
-        void RemoveObserver(IWeatherBot weatherBot);
+        void RegisterObserver(WeatherBot weatherBot);
+        void RemoveObserver(WeatherBot weatherBot);
         void NotifyObserver(WeatherData weatherData);
     }
 }

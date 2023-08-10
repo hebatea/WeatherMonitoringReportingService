@@ -7,25 +7,16 @@ using WeatherMonitoringReportingService.Data;
 
 namespace WeatherMonitoringReportingService.Bots
 {
-    public class SunBot : IWeatherBot, IWeatherStrategy
+    public class SunBot : WeatherBot
     {
-       
-        public void Update(WeatherData data)
+        public SunBot(IWeatherStrategy strategy, ConfigurationData configuration) : base(strategy, configuration)
         {
-            throw new NotImplementedException();
         }
 
-        public void CheckActivation(WeatherData weatherData, ConfigurationData configurationData)
+        public override void Update(WeatherData data)
         {
-            if (configurationData.Enabled)
-            {
-                if(weatherData.Temperature > configurationData.TemperatureThreshold)
-                {
-                    Console.WriteLine("SunBot Activated!");
-                    Console.WriteLine(configurationData.Message);
-                }
-            }
-            
+            _strategy.CheckActivation(data, _configuration);
         }
+
     }
 }
