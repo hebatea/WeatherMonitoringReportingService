@@ -8,9 +8,9 @@ namespace WeatherMonitoringReportingService.Data
 {
     public class ConfigurationData
     {
-        public Common.Bots BotName { get; set; }
         public bool Enabled { get; set; }
-        public double Threshold { get; set; }
+        public double? HumidityThreshold { get; set; }
+        public double? TemperatureThreshold { get; set; }
         public string Message { get; set; }
     }
 }

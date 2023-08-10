@@ -27,16 +27,16 @@ namespace WeatherMonitoringReportingService
         
         public enum Bots
         {
-            Rain,
-            Sun,
-            Snow
+            RainBot,
+            SunBot,
+            SnowBot
         }
 
         static Dictionary<string, Bots> botsDictionary = new Dictionary<string, Bots>
         {
-            { "RainBot", Bots.Rain },
-            { "SunBot", Bots.Sun  },
-            { "SnowBot", Bots.Snow  }
+            { "RainBot", Bots.RainBot },
+            { "SunBot", Bots.SunBot  },
+            { "SnowBot", Bots.SnowBot  }
         };
 
         public static double HandleIntUserInput(int IsIntOrDouble, int? StartRange = null, int? EndRange = null)

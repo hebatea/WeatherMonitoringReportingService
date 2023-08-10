@@ -9,6 +9,7 @@ using System.Xml.Linq;
 using WeatherMonitoringReportingService.Data;
 using WeatherMonitoringReportingService.DataFiles;
 using WeatherMonitoringReportingService.Parsers;
+using WeatherMonitoringReportingService.Parsers.ConfigurationParser;
 using static WeatherMonitoringReportingService.Common;
 
 namespace WeatherMonitoringReportingService
@@ -20,6 +21,8 @@ namespace WeatherMonitoringReportingService
 
             while (true)
             {
+                JSONConfigurationParser js = new JSONConfigurationParser();
+                js.ParseConfiguration("C:\\Users\\Heba Ashour\\source\\repos\\WeatherMonitoringReportingService\\WeatherMonitoringReportingService\\Data\\Configurations.json");
                 WriteWeclomingAndChoicesInConsole();
 
                 int number = (int)Common.HandleIntUserInput((int)IntOrDouble.integern, 1, 3);
