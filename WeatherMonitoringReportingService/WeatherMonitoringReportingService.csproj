@@ -82,6 +82,7 @@
     <Compile Include="Bots\SunBot.cs" />
     <Compile Include="Bots\Observers\IWeatherObserver.cs" />
     <Compile Include="Bots\Observers\WeatherObserver.cs" />
+    <Compile Include="Bots\WeatherBotsFactory.cs" />
     <Compile Include="Common.cs" />
     <Compile Include="Data\ConfigurationData.cs" />
     <Compile Include="Data\WeatherData.cs" />

@@ -6,6 +6,7 @@ using System.Text;
 using System.Text.Json.Nodes;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using WeatherMonitoringReportingService.Bots;
 using WeatherMonitoringReportingService.Data;
 using WeatherMonitoringReportingService.DataFiles;
 using WeatherMonitoringReportingService.Parsers;
@@ -21,8 +22,7 @@ namespace WeatherMonitoringReportingService
 
             while (true)
             {
-                JSONConfigurationParser js = new JSONConfigurationParser();
-                js.ParseConfiguration("C:\\Users\\Heba Ashour\\source\\repos\\WeatherMonitoringReportingService\\WeatherMonitoringReportingService\\Data\\Configurations.json");
+                
                 WriteWeclomingAndChoicesInConsole();
 
                 int number = (int)Common.HandleIntUserInput((int)IntOrDouble.integern, 1, 3);
@@ -30,15 +30,36 @@ namespace WeatherMonitoringReportingService
                 if (number == 3) break;
 
 
-                Console.WriteLine("Please Enter the File Path");
+                Console.WriteLine("Please Enter the File Path for Weather Parser: ");
 
                 string fileName = Console.ReadLine();
 
                 IWeatherParser weatherParser = WeatherParserFactory.GetWeatherParser((Common.WhichParser) number);
                 try
                 {
+
                     WeatherData weatherData = weatherParser.Parse(@fileName);
-                    Console.WriteLine(weatherData);
+                    Console.WriteLine(weatherData + "\n");
+
+                    Console.WriteLine("Please Enter the File Path for Configuration: ");
+                    fileName = Console.ReadLine();
+
+                    IConfigurationParser configurationParser = new JSONConfigurationParser();
+                    Dictionary<Common.Bots, ConfigurationData> configurationsDictionary = configurationParser.ParseConfiguration(fileName);
+                    WeatherObserver weatherObserver = new WeatherObserver();
+
+                    foreach(var botConfigurationPair in configurationsDictionary)
+                    {
+                        var bot = botConfigurationPair.Key;
+                        var configuration = botConfigurationPair.Value;
+
+                        WeatherBot weatherBot = WeatherBotsFactory.GetWeatherBot(bot, configuration);
+
+                        weatherObserver.RegisterObserver(weatherBot);
+
+                    }
+
+                    weatherObserver.NotifyObserver(weatherData);
 
                 }
                 catch (FileNotFoundException fileNotFoundException)
