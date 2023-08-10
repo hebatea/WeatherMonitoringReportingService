@@ -72,21 +72,32 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bots\Strategy\IWeatherStrategy.cs" />
+    <Compile Include="Bots\Observers\WeatherBot.cs" />
     <Compile Include="Bots\RainBot.cs" />
     <Compile Include="Bots\SnowBot.cs" />
+    <Compile Include="Bots\Strategy\RainStrategy.cs" />
+    <Compile Include="Bots\Strategy\SnowStrategy.cs" />
+    <Compile Include="Bots\Strategy\SunStrategy.cs" />
     <Compile Include="Bots\SunBot.cs" />
+    <Compile Include="Bots\Observers\IWeatherObserver.cs" />
+    <Compile Include="Bots\Observers\WeatherObserver.cs" />
+    <Compile Include="Bots\WeatherBotsFactory.cs" />
     <Compile Include="Common.cs" />
+    <Compile Include="Data\ConfigurationData.cs" />
     <Compile Include="Data\WeatherData.cs" />
-    <Compile Include="Parsers\IWeatherParser.cs" />
-    <Compile Include="Parsers\WeatherParserFactory.cs" />
-    <Compile Include="Parsers\XMLParser.cs" />
-    <Compile Include="Parsers\JSONParser.cs" />
+    <Compile Include="Parsers\ConfigurationParser\IConfigurationParser.cs" />
+    <Compile Include="Parsers\ConfigurationParser\JSONConfigurationParser.cs" />
+    <Compile Include="Parsers\WeatherDataParser\IWeatherParser.cs" />
+    <Compile Include="Parsers\WeatherDataParser\WeatherParserFactory.cs" />
+    <Compile Include="Parsers\WeatherDataParser\XMLParser.cs" />
+    <Compile Include="Parsers\WeatherDataParser\JSONParser.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="Configurations.json" />
+    <None Include="Data\Configurations.json" />
     <None Include="Data\weatherdata.json" />
     <Content Include="Data\weatherdata.xml" />
     <None Include="packages.config" />

@@ -12,18 +12,32 @@ namespace WeatherMonitoringReportingService
         public const string locationTag = "Location";
         public const string temperatureTag = "Temperature";
         public const string humidityTag = "Humidity";
+        
+        public enum IntOrDouble
+        {
+            integern = 0,
+            doublen = 1
+        }
 
         public enum WhichParser
         {
             XML = 1,
             JSON = 2,
         }
-
-        public enum IntOrDouble
+        
+        public enum Bots
         {
-            integern = 0,
-            doublen = 1
+            RainBot,
+            SunBot,
+            SnowBot
         }
+
+        static Dictionary<string, Bots> botsDictionary = new Dictionary<string, Bots>
+        {
+            { "RainBot", Bots.RainBot },
+            { "SunBot", Bots.SunBot  },
+            { "SnowBot", Bots.SnowBot  }
+        };
 
         public static double HandleIntUserInput(int IsIntOrDouble, int? StartRange = null, int? EndRange = null)
         {
