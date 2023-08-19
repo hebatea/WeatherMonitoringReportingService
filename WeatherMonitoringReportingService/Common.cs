@@ -23,6 +23,7 @@ namespace WeatherMonitoringReportingService
         {
             XML = 1,
             JSON = 2,
+            TEST = 3,
         }
         
         public enum Bots
