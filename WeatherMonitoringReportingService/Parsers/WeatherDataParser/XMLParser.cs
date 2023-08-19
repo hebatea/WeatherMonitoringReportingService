@@ -15,7 +15,7 @@ namespace WeatherMonitoringReportingService.DataFiles
         {
             if (!File.Exists(fileName))
             {
-                throw new FileNotFoundException("XML file not found.", fileName);
+                throw new FileNotFoundException($"XML file not found {fileName}.", fileName);
             }
 
             XmlDocument xmlDoc = new XmlDocument();
