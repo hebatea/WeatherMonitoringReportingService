@@ -26,10 +26,10 @@ namespace WeatherMonitoringReportingService.Tests.Parsers.Test
         [Fact]
         public void ParseXMLFile()
         {
-            string fileName = "C:\\Users\\Heba Ashour\\source\\repos\\WeatherMonitoringReportingService\\WeatherService.Tests\\weatherdata.xml";
+            string fullPath = GiveFullPath(@"weatherdata.xml");
 
             var xmlParser = new XMLParser();
-            var weatherData = xmlParser.Parse(fileName);
+            var weatherData = xmlParser.Parse(fullPath);
 
             Assert.NotNull(weatherData);
             weatherData.Location.Should().Be("Khanyounis");
@@ -53,17 +53,22 @@ namespace WeatherMonitoringReportingService.Tests.Parsers.Test
         [Fact]
         public void ParseJsonFile()
         {
-            string fileName = "C:\\Users\\Heba Ashour\\source\\repos\\WeatherMonitoringReportingService\\WeatherService.Tests\\weatherdata.json";
+            string fullPath = GiveFullPath(@"weatherdata.json");
 
-
-
-            var xmlParser = new JSONParser();
-            var weatherData = xmlParser.Parse(fileName);
+            var jsonParser = new JSONParser();
+            var weatherData = jsonParser.Parse(fullPath);
 
             Assert.NotNull(weatherData);
             weatherData.Location.Should().Be("Khanyounis");
             weatherData.Temperature.Should().Be(-1);
             weatherData.Humidity.Should().Be(90);
+        }
+
+        private static string GiveFullPath(string fileName)
+        {
+            string basePath = AppDomain.CurrentDomain.BaseDirectory;
+            string fullPath = Path.Combine(basePath, fileName);
+            return fullPath;
         }
 
         [Fact]

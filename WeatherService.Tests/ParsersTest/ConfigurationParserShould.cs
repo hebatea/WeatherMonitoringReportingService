@@ -31,10 +31,11 @@ namespace WeatherService.Tests
         [Fact]
         public void ParseConfiguartionFile()
         {
-            string fileName = "C:\\Users\\Heba Ashour\\source\\repos\\WeatherMonitoringReportingService\\WeatherService.Tests\\Configurations.json";
+            string basePath = AppDomain.CurrentDomain.BaseDirectory;
+            string fullPath = Path.Combine(basePath, @"Configurations.json");
 
             var configurationParser = new JSONConfigurationParser();
-            var configuartionData = configurationParser.ParseConfiguration(fileName);
+            var configuartionData = configurationParser.ParseConfiguration(fullPath);
             var keyList = new List<Common.Bots> { Common.Bots.RainBot, Common.Bots.SunBot, Common.Bots.SnowBot };
             List<ConfigurationData> valueList = new List<ConfigurationData>
             {
@@ -49,6 +50,11 @@ namespace WeatherService.Tests
 
             configuartionData.Values.Should().BeEquivalentTo(valueList);
 
+        }
+
+        private string GiveFullPath(string v)
+        {
+            throw new NotImplementedException();
         }
 
         [Fact]
