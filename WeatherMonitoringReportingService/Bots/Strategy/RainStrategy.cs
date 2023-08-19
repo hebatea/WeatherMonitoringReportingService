@@ -7,9 +7,9 @@ using WeatherMonitoringReportingService.Data;
 
 namespace WeatherMonitoringReportingService.Bots.Strategy
 {
-    internal class RainStrategy: IWeatherStrategy
+    public class RainStrategy: IWeatherStrategy
     {
-        public void CheckActivation(WeatherData weatherData, ConfigurationData configurationData)
+        public bool CheckActivation(WeatherData weatherData, ConfigurationData configurationData)
         {
             if (configurationData.Enabled)
             {
@@ -17,8 +17,10 @@ namespace WeatherMonitoringReportingService.Bots.Strategy
                 {
                     Console.WriteLine("RainBot Activated!");
                     Console.WriteLine(configurationData.Message);
+                    return true;
                 }
             }
+            return false;
         }
     }
 }

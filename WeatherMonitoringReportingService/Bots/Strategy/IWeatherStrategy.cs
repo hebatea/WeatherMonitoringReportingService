@@ -9,6 +9,6 @@ namespace WeatherMonitoringReportingService.Bots
 {
     public interface IWeatherStrategy
     {
-        public void CheckActivation(WeatherData weatherData,ConfigurationData configurationData);
+        public bool CheckActivation(WeatherData weatherData,ConfigurationData configurationData);
     }
 }
