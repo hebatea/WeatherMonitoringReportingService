@@ -72,6 +72,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bots\Observers\IWeatherBot.cs" />
     <Compile Include="Bots\Strategy\IWeatherStrategy.cs" />
     <Compile Include="Bots\Observers\WeatherBot.cs" />
     <Compile Include="Bots\RainBot.cs" />
@@ -97,6 +98,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="build-and-test.yml" />
     <None Include="Data\Configurations.json" />
     <None Include="Data\weatherdata.json" />
     <Content Include="Data\weatherdata.xml" />
